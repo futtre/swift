@@ -1,0 +1,5 @@
+EMIF=eth0
+EMBW=1mbit
+EMDELAY=150ms
+EMJTTR=10ms
+
