@@ -1,6 +1,6 @@
 if [ $EMIF ]; then
-    sudo tc qdisc del dev $EMIF ingress
-    sudo tc qdisc del dev ifb0 root
+    sudo /sbin/tc qdisc del dev $EMIF ingress
+    sudo /sbin/tc qdisc del dev ifb0 root
 fi
 sudo iptables -F &
 cd swift

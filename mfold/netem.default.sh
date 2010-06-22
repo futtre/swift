@@ -20,7 +20,7 @@ if [ ! $EMJTTR ]; then
     EMJTTR=0ms
 fi
 
-TC="sudo tc "
+TC="sudo /sbin/tc "
 
 echo ifb0 up
 sudo modprobe ifb

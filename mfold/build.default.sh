@@ -46,6 +46,8 @@ CPPPATH=~/include LIBPATH=~/lib scons -j4 || exit 7
 echo testing
 tests/connecttest || exit 8
 
+rm bingrep.cpp
+
 # TODO: one method
 if [ ! -e bin ]; then mkdir bin; fi
 g++ -I. *.cpp ext/seq_picker.cpp -pg -o bin/swift-pg &
