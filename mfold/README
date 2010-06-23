@@ -1,0 +1,75 @@
+#how to run mfold tests on several servers simultaneously
+
+#on each server, copy your local bash_profile into the server
+scp bash_profile flutra@node302:.bash_profile (example)
+
+#you can check if the bash_profile was properly copied, if you run
+server_address# env
+
+#on each server, run the following git commands, where you identify your email&name
+flutra@node302:~$ git config --global user.email "flutra@gmail.com"
+flutra@node302:~$ git config --global user.name "Flutra"
+
+copy the das2.txt file on your local mfold folder, which contains a list of
+servers you will run the mfold tests on. Alternatively, create your own
+list of servers, for the purpose of your tests (in this case, one-serv.txt)
+Example:
+flutra@flutra:~/swift/mfold$ cat one-serv.txt 
+seeder
+node302
+
+copy the config file on your local /home/flutra/.ssh folder, and modify it
+according to your needs. e.g. specify who the seeder and the rest of the
+servers are. For example:
+Host seeder
+HostName 130.161.211.200
+
+Host node302
+HostName 130.161.211.202
+
+on your local mfold folder, modify env.default.sh, such that all the servers
+know which seeder they should connect to. For example:
+export SEEDER=120.161.211.200
+Other parameters, such as the git repository, may be modified here. For example:
+export ORIGIN=git://github.com/futtre/swift.git
+
+#run the first test, build, and run
+flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./doall test
+#start clean on all servers or kill previous swift from servers
+flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./doall clean
+#or
+flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./doall rm
+#build swift on the servers
+flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./doall build
+#install netem - tweaking network simulation parameters
+flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./doall netem
+#run swift on servers
+flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./doall run
+
+run.default.sh will be run on servers, who play the role of leechers
+run.seeder.sh will run on the server, defined as a seeder
+NOTE: run doesn't stop by its own, so you have to stop it.
+Alternatively, check the status with ./dotop
+Once the mfold test finishes, run clean script again (to stop swift on the servers)
+
+#checking the status on servers ?
+flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./dotop
+
+#parse the logs and produce index.html with graphs
+flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./dohrv
+
+//machines I am connecting to
+seeder: 130.161.211.200
+lossy: 130.161.211.206
+messy: 130.161.211.208
+1mbit: 130.161.211.209
+node311: 130.161.211.211
+node312: 130.161.211.212
+node313: 130.161.211.213
+usa: 97.107.136.211
+
+
+
+
+ 
+
