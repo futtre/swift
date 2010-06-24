@@ -8,4 +8,5 @@ rm -f core
 rm -f chunk
 sleep $(( $RANDOM % 5 ))
 bin/swift-o2 -w -h $HASH -f chunk -t $SEEDER:$SWFTPORT \
+    #-p -D 2>lerr | gzip > lout.gz || exit 2
     -l 0.0.0.0:$RUNPORT -p -D 2>lerr | gzip > lout.gz || exit 2
