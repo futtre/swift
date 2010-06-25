@@ -48,7 +48,8 @@ flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./doall run
 
 run.default.sh will be run on servers, who play the role of leechers
 run.seeder.sh will run on the server, defined as a seeder
-NOTE: run doesn't stop by its own, so you have to stop it.
+NOTE: run doesn't stop by its own, so you have to stop it, using:
+flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./doall clean
 Alternatively, check the status with ./dotop
 Once the mfold test finishes, run clean script again (to stop swift on the servers)
 
