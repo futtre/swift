@@ -22,14 +22,14 @@ copy the config file on your local /home/flutra/.ssh folder, and modify it
 according to your needs. e.g. specify who the seeder and the rest of the
 servers are. For example:
 Host seeder
-HostName 130.161.211.200
+HostName xxx.xxx.xxx.xxx
 
 Host node302
-HostName 130.161.211.202
+HostName xxx.xxx.xxx.xxx
 
 on your local mfold folder, modify env.default.sh, such that all the servers
 know which seeder they should connect to. For example:
-export SEEDER=120.161.211.200
+export SEEDER=xxx.xxx.xxx.xxx
 Other parameters, such as the git repository, may be modified here. For example:
 export ORIGIN=git://github.com/futtre/swift.git
 
@@ -57,19 +57,4 @@ flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./dotop
 
 #parse the logs and produce index.html with graphs
 flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./dohrv
-
-//machines I am connecting to
-seeder: 130.161.211.200
-lossy: 130.161.211.206
-messy: 130.161.211.208
-1mbit: 130.161.211.209
-node311: 130.161.211.211
-node312: 130.161.211.212
-node313: 130.161.211.213
-usa: 97.107.136.211
-
-
-
-
- 
 
