@@ -14,7 +14,7 @@ using namespace std;
 
 tint Channel::MIN_DEV = 50*TINT_MSEC;
 tint Channel::MAX_SEND_INTERVAL = TINT_SEC*58;
-tint Channel::LEDBAT_TARGET = TINT_MSEC*90;
+tint Channel::LEDBAT_TARGET = TINT_MSEC*105;
 float Channel::LEDBAT_GAIN = 1.0/LEDBAT_TARGET;
 tint Channel::LEDBAT_DELAY_BIN = TINT_SEC*30;
 tint Channel::MAX_POSSIBLE_RTT = TINT_SEC*10;
@@ -155,7 +155,7 @@ tint Channel::LedbatNextSendTime () {
             owd_cur = owd_current_[i];
     }
     if (ack_not_rcvd_recent_)
-        BackOffOnLosses(0.65);
+        BackOffOnLosses(0.75);
     ack_rcvd_recent_ = 0;
     tint queueing_delay = owd_cur - owd_min;
     tint off_target = LEDBAT_TARGET - queueing_delay;
