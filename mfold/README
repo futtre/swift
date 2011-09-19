@@ -59,3 +59,6 @@ flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./dotop
 #parse the logs and produce index.html with graphs
 flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./dohrv
 
+
+NOTES:
+zcat lout.gz | mfold/logparse node430 | grep usa
