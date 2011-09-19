@@ -59,6 +59,11 @@ flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./dotop
 #parse the logs and produce index.html with graphs
 flutra@flutra:~swift/mfold# SERVERS=one-serv.txt ./dohrv
 
+MISC.
+seeder:
+./swift -f ~/path/big_bunny.avi -l localhost:20000
+leecher:
+./swift -h xxxxxxx -t localhost:20000 -f bb.avi
 
-NOTES:
-zcat lout.gz | mfold/logparse node430 | grep usa
+PARSING.
+zcat lout.gz | mfold/logparse nodexx | grep usa
